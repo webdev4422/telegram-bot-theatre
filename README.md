@@ -1,9 +1,6 @@
-# Telegram bot with Puppeteer
+# Telegram bot
 
-Puppeteer is a testing library and headless chrome automation tool https://pptr.dev/
 Telegram HTTP API https://core.telegram.org/api
-
-This bot works by scraping given website every 30 second and checking status on svg element attributes.
 
 ## Deployment
 
