@@ -1,11 +1,13 @@
 import dotenv from 'dotenv'
 dotenv.config()
 
-let newData = 0
-let lastData = 0
+let freePlaces = 0
+let lastestFreePlaces = 0
 
 async function fetchX() {
-  const response = await fetch('https://api-widget.kontramarka.ua/api/11/11204/events/97226', {
+  // Replace event with event id from URL https://widget.kontramarka.ua/widget510site11204/widget/event/104204
+  // const response = await fetch('https://api-widget.kontramarka.ua/api/11/11204/events/97226', {
+  const response = await fetch('https://api-widget.kontramarka.ua/api/11/11204/events/104204', {
     // Get headers from 'Copy as cURL' xhr request '97226' in Chrome devtools
     headers: {
       origin: 'https://widget.kontramarka.ua',
@@ -32,14 +34,13 @@ async function fetchX() {
 
   const data = await response.json()
 
-  if (data.data.freePlacesCount) {
-    if (data.data.freePlacesCount > 0) {
-      newData = data.data.freePlacesCount
-    }
+  // Check if property exists and is > 0
+  if (data.data.freePlacesCount && data.data.freePlacesCount > 0) {
+    freePlaces = data.data.freePlacesCount
   }
 
-  if (lastData !== newData) {
-    lastData = newData
+  if (lastestFreePlaces !== freePlaces) {
+    lastestFreePlaces = freePlaces
     useBot()
   }
 
@@ -47,7 +48,8 @@ async function fetchX() {
   async function useBot() {
     const telegramBotToken = process.env.TELEGRAM_BOT_TOKEN
     const telegramChatId = process.env.TELEGRAM_CHAT_ID
-    const telegramMessageInfo = `Появилися квитки на "Гуцулка Ксеня": ${lastData}`
+    const spectacleName = data.data.name
+    const telegramMessageInfo = `Появилися квитки на "${spectacleName}": ${lastestFreePlaces}`
 
     // Send HTTP GET request to Telegram bot API
     // const response = await fetch(`https://api.telegram.org/${telegramBotToken}/getUpdates`) // Get info about chat id
