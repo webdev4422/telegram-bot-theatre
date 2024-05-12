@@ -49,7 +49,8 @@ async function fetchX() {
     const telegramBotToken = process.env.TELEGRAM_BOT_TOKEN
     const telegramChatId = process.env.TELEGRAM_CHAT_ID
     const spectacleName = data.data.name
-    const telegramMessageInfo = `Появилися квитки на "${spectacleName}": ${lastestFreePlaces}`
+    // https://widget.kontramarka.ua/widget510site11204/widget/event/104204
+    const telegramMessageInfo = `Появилися квитки на "${spectacleName}": ${lastestFreePlaces}\nhttps://if.kontramarka.ua/uk/kajdaseve-sima-89788.html`
 
     // Send HTTP GET request to Telegram bot API
     // const response = await fetch(`https://api.telegram.org/${telegramBotToken}/getUpdates`) // Get info about chat id
