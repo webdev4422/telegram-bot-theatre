@@ -55,7 +55,7 @@ async function fetchX() {
     // Send HTTP GET request to Telegram bot API
     // const response = await fetch(`https://api.telegram.org/${telegramBotToken}/getUpdates`) // Get info about chat id
     const response = await fetch(
-      `https://api.telegram.org/${telegramBotToken}/sendMessage?chat_id=${telegramChatId}&text=${telegramMessageInfo}&link_preview_options=is_disabled`
+      `https://api.telegram.org/${telegramBotToken}/sendMessage?chat_id=${telegramChatId}&text=${telegramMessageInfo}&disable_web_page_preview=true`
     )
     // const data = await response.json()
     // console.log(data)
